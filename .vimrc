@@ -1,106 +1,151 @@
-" Use the Solarized Dark theme
-set background=dark
-colorscheme solarized
-let g:solarized_termtrans=1
+" Change leader key from default '\' to ' '. More ergonomic
+let mapleader = " "
 
-" Make Vim more useful
-set nocompatible
-" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
-" Enhance command-line completion
-set wildmenu
-" Allow cursor keys in insert mode
-set esckeys
-" Allow backspace in insert mode
-set backspace=indent,eol,start
-" Optimize for fast terminal connections
-set ttyfast
-" Add the g flag to search/replace by default
-set gdefault
-" Use UTF-8 without BOM
-set encoding=utf-8 nobomb
-" Change mapleader
-let mapleader=","
-" Don’t add empty newlines at the end of files
-set binary
-set noeol
-" Centralize backups, swapfiles and undo history
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-if exists("&undodir")
-	set undodir=~/.vim/undo
-endif
+" Enable nerd font support
+let g:nerd_font=1
 
-" Don’t create backups when editing files in certain directories
-set backupskip=/tmp/*,/private/tmp/*
-
-" Respect modeline in files
-set modeline
-set modelines=4
-" Enable per-directory .vimrc files and disable unsafe commands in them
-set exrc
-set secure
-" Enable line numbers
+" Enable numberline. 
 set number
-" Enable syntax highlighting
-syntax on
-" Highlight current line
+" Enable  relative numberline. Useful for jumping between line
+set relativenumber
+
+" Sync clipboard between OS and vim
+" Remove/Comment this if you want seperate buffers between OS and vim clipboards
+" set clipboard=unnamedplus
+
+" Enable mouse support. Allows for moving and highlighting with mouse
+" WSL1/2 works best with these not set. 
+" set mouse=n " enables mouse support only in normal mode.
+" set mouse=v " enables mouse support only in visual mode.
+" set mouse=i " enables mouse support only in insert mode.
+" set mouse=c " enables mouse support only in command-line mode.
+" set mouse=a " enables mouse support for all modes.
+
+" Improve performance by not redrawing on certain actions
+set lazyredraw
+
+" Indent wrapped lines to align with the start of original line
+set breakindent
+
+" Enable more persistant undo history. 
+" Specifiying undodir stops vim from creating undo history file in working dirs 
+set undodir=~/.vim/undo
+set undofile
+
+" Case-insensitive searching UNLESS one or more capital letters in search term
+" set ignorecase
+set smartcase
+
+" Enable/Disable sign column
+" set signcolumn=auto " Show the sign column only when necessary, i.e., when there are signs to display
+" set signcolumn=no " No sign column will be displayed
+set signcolumn=yes " Always show the sign column, even if no signs are present
+
+" Decrease update time. 
+" Time to wait after typing for vim to continue background operations, i.e lineupdate, autocompletion
+set updatetime=250
+
+" Decrease mapped squence wait time
+" Time to wait untill vim considers mapped key input command as finished 
+set timeoutlen=300
+
+" Configure how splits should open
+set splitright
+set splitbelow
+
+" Enable Preview for substitutions live, as you type!
+" Not supported in my version of vim (vim-gtk3 8.1)
+" set inccommand=split
+
+" Highlight current line location
 set cursorline
-" Make tabs as wide as two spaces
-set tabstop=2
-" Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set list
-" Highlight searches
+
+" Minimum number of lines to keep above and below the cursor
+set scrolloff=10
+
+" Highlight on search
 set hlsearch
-" Ignore case of searches
-set ignorecase
-" Highlight dynamically as pattern is typed
-set incsearch
-" Always show status line
-set laststatus=2
-" Enable mouse in all modes
-set mouse=a
-" Disable error bells
-set noerrorbells
-" Don’t reset cursor to start of line when moving around.
-set nostartofline
-" Show the cursor position
-set ruler
-" Don’t show the intro message when starting Vim
-set shortmess=atI
-" Show the current mode
-set showmode
-" Show the filename in the window titlebar
-set title
-" Show the (partial) command as it’s being typed
+
+" Display current command in status
 set showcmd
-" Use relative line numbers
-if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
-endif
-" Start scrolling three lines before the horizontal window border
-set scrolloff=3
+set laststatus=2
 
-" Strip trailing whitespace (,ss)
-function! StripWhitespace()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	:%s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
-endfunction
-noremap <leader>ss :call StripWhitespace()<CR>
-" Save a file as root (,W)
-noremap <leader>W :w !sudo tee % > /dev/null<CR>
+" BASIC KEY MAPS
+" BASIC KEY MAPS
 
-" Automatic commands
-if has("autocmd")
-	" Enable file type detection
-	filetype on
-	" Treat .json files as .js
-	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-	" Treat .md files as Markdown
-	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-endif
+" Yanks text to OS clipboard
+vnoremap <leader>y "+y 
+
+" Escape insert mode on jj
+inoremap jj <Esc>
+
+" Toggle relative numberline ON/OFF
+nnoremap <leader>rn :set rnu!<CR>
+
+" Opens split 
+nnoremap <Leader>hs :split<CR>
+nnoremap <Leader>vs :vsplit<CR>
+
+" Clear search highlight on pressing <Esc> in normal mode
+nnoremap <Esc><Esc> :set nohlsearch<CR>
+
+" IF USING set mouse OPTION, you may want:
+" Scroll with the mouse and move the cursor down line by line
+" if has('mouse')
+"   noremap <ScrollWheelDown> <C-e>
+"   noremap <ScrollWheelUp> <C-y>
+" endif
+
+" Go to the next diagnostic
+nnoremap ]d :lnext<CR>
+" Go to the previous diagnostic
+nnoremap [d :lprev<CR>
+" Show diagnostic in new window
+nnoremap <leader>e :lwindow<CR>
+" Open diagnostic
+nnoremap <leader>q :lopen<CR>
+
+" For Pros: Disable arrow keys in normal mode
+" nnoremap <Left> :echo "Use h to move!!"<CR> 
+" nnoremap <Right> :echo "Use l to move!!"<CR>
+" nnoremap <Up> :echo "Use k to move!!"<CR>
+" nnoremap <Down> :echo "Use j to move!!"<CR>
+
+" Use CTRL+<hjkl> to switch between windows
+" COMMENTING OUT TO PRACTICE DEFAULT KEYBINDS
+"nnoremap <C-h> <C-w>h  " Move left
+"nnoremap <C-l> <C-w>l  " Move right
+"nnoremap <C-j> <C-w>j  " Move down
+"nnoremap <C-k> <C-w>k  " Move up
+
+" PLUGIN 
+" PLUGIN 
+call plug#begin('~/.vim/plugged')
+
+Plug 'preservim/nerdtree'  				" File tree explorer
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  	" Lazy search. Async installation
+Plug 'junegunn/fzf.vim'
+Plug 'machakann/vim-highlightedyank' 			" Highlight yanked text && yank/delete around paragraph (yap/dap)
+Plug 'tpope/vim-fugitive'				" Enables integration with Git
+Plug 'mbbill/undotree'					" Create a Tree history of undo for easy selection
+" Plug 'laytan/cloak.nvim'				" Hide Sensitive Information. Requires nvim..
+" Plug 'ThePrimeagen/vim-be-good'			" Game-like excercises to 'be good' at vim. Requires nvim..
+" Plug 'folke/zen-mode.nvim'				" Remove distractions and provide clean UI. Requires nvim..
+
+call plug#end()
+
+" PLUGIN CONFIG 
+" PLUGIN CONFIG 
+
+" Highlight Yanked text
+" -- Try yap && dap
+let g:highlightedyank_highlight_duration = 150
+
+" Show hidden files
+let NERDTreeShowHidden=1
+
+" Enable/Disable Undo Tree window
+nnoremap <leader>u :UndotreeToggle<CR>  " Toggle undotree with leader key
+
+" THEME. Most important line
+colorscheme apprentice
