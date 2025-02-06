@@ -188,8 +188,13 @@ complete -W "NSGlobalDomain" defaults;
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
-# configure oh-my-posh theme
-eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/froczh.omp.json)"
+# Configure prompt
+# Manually define themes
+[ -f ~/code/my-gh/dotfiles/.bash_prompt ] && source ~/code/my-gh/dotfiles/.bash_prompt
 
+# oh-my-posh theme
+# eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/froczh.omp.json)"
+
+# EPKL
 # Support EPKL keyboard shortcurt/layer
 # export XKB_DEFAULT_OPTIONS="caps:extend"
