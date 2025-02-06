@@ -1,12 +1,8 @@
 # ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# ~/.profile file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
 # see /usr/share/doc/bash/examples/startup-files for examples.
 # the files are located in the bash-doc package.
-
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # the default umask is set in /etc/profile; for setting the umask
 # for ssh logins, install and configure the libpam-umask package.
@@ -192,4 +188,8 @@ complete -W "NSGlobalDomain" defaults;
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
+# configure oh-my-posh theme
 eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/froczh.omp.json)"
+
+# Support EPKL keyboard shortcurt/layer
+# export XKB_DEFAULT_OPTIONS="caps:extend"

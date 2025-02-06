@@ -27,7 +27,6 @@
 "                                                                                   
 "This is a mashup of mathisbynens/dotfile/.vimrc && nvim-lua/kickstart.nvim
 
-
 " Set <space> as the leader key
 " See `:help mapleader`
 let mapleader = ' '
@@ -57,7 +56,6 @@ set backspace=indent,eol,start
 " set belloff=all
 " Disable error bell
 set noerrorbells
-
 
 " Always displays last line of file at botton of editor
 " set display=lastline 
@@ -231,6 +229,9 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 
+" Enable color scheme support when using editor inside tmux
+set term=xterm-256color
+
 
 " BASIC KEY MAPS
 " BASIC KEY MAPS
@@ -359,14 +360,16 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-" Colorscheme
+" Colorschemes
+Plug 'romainl/Apprentice'
 Plug 'ghifarit53/tokyonight-vim'
-
-" Set airline as statusline
-Plug 'vim-airline/vim-airline'
+Plug 'morhetz/gruvbox'
 
 " "gc" to comment visual regions/lines
-" Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
+
+" Set airline as statusline
+" Plug 'vim-airline/vim-airline'
 
 " Enable LSP
 " Plug 'prabirshrestha/vim-lsp'
@@ -403,6 +406,8 @@ let g:highlightedyank_highlight_duration = 150
 
 " Show hidden files
 let NERDTreeShowHidden=1
+" Enable/Disable Undo Tree window
+nnoremap <leader>n :NERDTreeToggle<CR>  " Toggle NERDtree with leader key
 
 " Enable/Disable Undo Tree window
 nnoremap <leader>u :UndotreeToggle<CR>  " Toggle undotree with leader key

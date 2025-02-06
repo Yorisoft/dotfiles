@@ -1,0 +1,15 @@
+[user]
+	email =
+	name = 
+	username = 
+[safe]
+	directory = 
+[core]
+	safecrlf = false
+	autocrlf = input
+[init]
+	defaultBranch = main
+[credential]
+	# Better git support in WSL2
+	# Sync git credentials accross systems 
+	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
