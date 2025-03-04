@@ -1,0 +1,8 @@
+.git
+bootstrap.sh
+backup_dotfiles.sh
+.gitconfig
+.gitkeep
+log/*
+.vim
+.tmux
