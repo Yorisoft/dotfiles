@@ -9,13 +9,33 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 set $fm HDMI-0
 set $sm DP-2
 
-# Would like to do thing in a x11 conf file
-exec sleep 1 && /usr/bin/xrandr --output HDMI-0 --pos 0x0 --output DP-2 --pos 2560x0
+# gaps
+# outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
+# Inner gaps for all windows: space between two adjacent windows (or split containers).
+gaps inner 8px
+# Outer gaps for all windows: space along the screen edges.
+gaps outer 10px
+# Inner and outer gaps for all windows on a specific workspace.
+# <ws> can be a workspace number or name.
+# workspace <ws> gaps inner <gap_size>[px]
+# workspace <ws> gaps outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
+# Enabling “Smart Gaps” means no gaps will be shown when there is
+# precisely one window or split container on the workspace.
+#
+# inverse_outer only enables outer gaps when there is exactly one
+# window or split container on the workspace.
+# smart_gaps on|off|inverse_outer
+smart_gaps on
+
+# Dark theme ( Requires it be set in gnome first )
+# Not currently working.
+exec --no-startup-id gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+exec --no-startup-id gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Enable nautilus to always window floating
 # for_window [class="Org.gnome.Nautilus"] floating enable
@@ -23,10 +43,7 @@ exec sleep 1 && /usr/bin/xrandr --output HDMI-0 --pos 0x0 --output DP-2 --pos 25
 # for_window [class="Pavucontro"] floating enable
 # Sometimes this is needed to fix florence keyboard
 for_window [class="Florence"] floating enable
-
-# Clips the slection to os clipboard i3wm
-# bindsym $mod+y exec --no-startup-id xclip -selection clipboard < /dev/stdin
-
+for_window [class="privateinternetaccess"] move position botton right
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -47,6 +64,9 @@ exec --no-startup-id dex --autostart --environment i3
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# Display Power Management Signaling. Set to 30 minutes
+# exec_always --no-startup-id xset dpms 0 0 1800
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -85,40 +105,24 @@ bindsym $mod+i focus up
 bindsym $mod+k focus down
 bindsym $mod+j focus left
 bindsym $mod+l focus right
-bindsym Mod1+i focus up
-bindsym Mod1+k focus down
-bindsym Mod1+j focus left
-bindsym Mod1+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-bindsym Mod1+Left focus left
-bindsym Mod1+Down focus down
-bindsym Mod1+Up focus up
-bindsym Mod1+Right focus right
 
 # move focused window
 bindsym $mod+Shift+i move up
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+l move right
-bindsym Mod1+Shift+i move up
-bindsym Mod1+Shift+k move down
-bindsym Mod1+Shift+j move left
-bindsym Mod1+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-bindsym Mod1+Shift+Left move left
-bindsym Mod1+Shift+Down move down
-bindsym Mod1+Shift+Up move up
-bindsym Mod1+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -196,44 +200,44 @@ set $ws18 18
 set $ws19 19
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym Mod1+1 workspace number $ws11
-bindsym Mod1+2 workspace number $ws12
-bindsym Mod1+3 workspace number $ws13
-bindsym Mod1+4 workspace number $ws14
-bindsym Mod1+5 workspace number $ws15
-bindsym Mod1+6 workspace number $ws16
-bindsym Mod1+7 workspace number $ws17
-bindsym Mod1+8 workspace number $ws18
-bindsym Mod1+9 workspace number $ws19
+bindsym Mod4+1 workspace number $ws1
+bindsym Mod4+2 workspace number $ws2
+bindsym Mod4+3 workspace number $ws3
+bindsym Mod4+4 workspace number $ws4
+bindsym Mod4+5 workspace number $ws5
+bindsym Mod4+6 workspace number $ws6
+bindsym Mod4+7 workspace number $ws7
+bindsym Mod4+8 workspace number $ws8
+bindsym Mod4+9 workspace number $ws9
+bindsym $mod+1 workspace number $ws11
+bindsym $mod+2 workspace number $ws12
+bindsym $mod+3 workspace number $ws13
+bindsym $mod+4 workspace number $ws14
+bindsym $mod+5 workspace number $ws15
+bindsym $mod+6 workspace number $ws16
+bindsym $mod+7 workspace number $ws17
+bindsym $mod+8 workspace number $ws18
+bindsym $mod+9 workspace number $ws19
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym Mod1+Shift+1 move container to workspace number $ws11
-bindsym Mod1+Shift+2 move container to workspace number $ws12
-bindsym Mod1+Shift+3 move container to workspace number $ws13
-bindsym Mod1+Shift+4 move container to workspace number $ws14
-bindsym Mod1+Shift+5 move container to workspace number $ws15
-bindsym Mod1+Shift+6 move container to workspace number $ws16
-bindsym Mod1+Shift+7 move container to workspace number $ws17
-bindsym Mod1+Shift+8 move container to workspace number $ws18
-bindsym Mod1+Shift+9 move container to workspace number $ws19
+bindsym Mod4+Shift+1 move container to workspace number $ws1
+bindsym Mod4+Shift+2 move container to workspace number $ws2
+bindsym Mod4+Shift+3 move container to workspace number $ws3
+bindsym Mod4+Shift+4 move container to workspace number $ws4
+bindsym Mod4+Shift+5 move container to workspace number $ws5
+bindsym Mod4+Shift+6 move container to workspace number $ws6
+bindsym Mod4+Shift+7 move container to workspace number $ws7
+bindsym Mod4+Shift+8 move container to workspace number $ws8
+bindsym Mod4+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+1 move container to workspace number $ws11
+bindsym $mod+Shift+2 move container to workspace number $ws12
+bindsym $mod+Shift+3 move container to workspace number $ws13
+bindsym $mod+Shift+4 move container to workspace number $ws14
+bindsym $mod+Shift+5 move container to workspace number $ws15
+bindsym $mod+Shift+6 move container to workspace number $ws16
+bindsym $mod+Shift+7 move container to workspace number $ws17
+bindsym $mod+Shift+8 move container to workspace number $ws18
+bindsym $mod+Shift+9 move container to workspace number $ws19
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -277,5 +281,17 @@ exec --no-startup-id i3-restore-layout
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+	output primary
+    status_command i3status
 }
+
+bar {
+	output nonprimary
+    status_command i3status
+}
+
+
+exec_always --no-startup-id picom --experimental-backends --config ~/.config/picom/picom.conf -b
+
+# exec --no-startup-id /home/yorisoft/Apps/source/foo-Wallpaper-Feh-Gif/back4.sh auto ~/.config/variety/Downloaded/walls/animated/city.gif
+# exec --no-startup-id feh --bg-max ~/.config/variety/Downloaded/walls/animated/city.gif

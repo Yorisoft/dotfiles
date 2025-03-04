@@ -1,0 +1,13 @@
+[user]
+	email =
+	name =
+	username =
+[core]
+	safecrlf = false
+	autocrlf = input
+[safe]
+	directory = ~/foo
+[credential]
+	helper = !gh auth git-credential
+[init]
+	defaultBranch = main
