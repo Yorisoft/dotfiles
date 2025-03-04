@@ -3,6 +3,7 @@ bootstrap.sh
 backup_dotfiles.sh
 .gitconfig
 .gitkeep
+.gitignore
 log/*
 .vim
 .tmux

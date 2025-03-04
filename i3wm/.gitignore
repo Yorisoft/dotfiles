@@ -1,0 +1,33 @@
+# Compiled Python files
+*.pyc
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+#c++ IDE files
+# Visual Studio
+.vs/
+.vs2019/
+.vs2017/
+.vs2022/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.log
+
+# VS Code
+.vscode/
+.history/
+*.code-workspace

@@ -3,11 +3,11 @@
 	name =
 	username =
 [core]
-	safecrlf = false
 	autocrlf = input
+	safecrlf = false
+[init]
+	defaultBranch = main
 [safe]
 	directory = ~/foo
 [credential]
 	helper = !gh auth git-credential
-[init]
-	defaultBranch = main
