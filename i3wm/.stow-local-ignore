@@ -5,5 +5,3 @@ backup_dotfiles.sh
 .gitkeep
 .gitignore
 log/*
-.vim
-.tmux
