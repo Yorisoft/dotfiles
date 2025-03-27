@@ -65,6 +65,9 @@ if has("autocmd") 							" Automatic commands
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+	" Treat .clang-format files as YAML
+	autocmd BufNewFile,BufRead .clang-format setfiletype yaml
+
 	" Treat any .sql files as SQLite 
 	" autocmd BufNewFile,BufRead *.sql setlocal filetype=sql syntax=sql
 endif

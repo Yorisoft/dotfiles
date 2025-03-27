@@ -11,10 +11,6 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export QT_QPA_PLATFORMTHEME=gtk2
-export XDG_CURRENT_DESKTOP=KDE
-export XDG_SESSION_DESKTOP=KDE
-
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -143,6 +139,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# export QT_QPA_PLATFORMTHEME=gtk2
+# export XDG_CURRENT_DESKTOP=KDE
+# export XDG_SESSION_DESKTOP=KDE
+
+
 # Theme
 # oh-my-posh theme
 # eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/amro.omp.json)"
@@ -168,7 +169,8 @@ alias ani-cli="github/ani-cli/./ani-cli"
 
 function fzf_cd() {
     local dir
-	dir=$(fdfind --type d . / \
+	dir=$(fdfind --type d --hidden . / \
+				 --exclude .git \
 				 --exclude proc \
 				 --exclude home/*/.cache \
 				 --exclude var/cache \

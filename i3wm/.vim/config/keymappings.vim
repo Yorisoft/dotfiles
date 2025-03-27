@@ -3,6 +3,9 @@
 " Yanks text to OS clipboard
 vnoremap <leader>y "+y 
 "
+" Paste text from OS clipboard
+vnoremap <leader>p "+p 
+"
 " Escape insert mode on jj
 inoremap jj <Esc>
 
