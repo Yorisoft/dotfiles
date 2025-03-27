@@ -11,6 +11,9 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+export QT_QPA_PLATFORMTHEME=gtk2
+export XDG_CURRENT_DESKTOP=KDE
+export XDG_SESSION_DESKTOP=KDE
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -162,3 +165,37 @@ setxkbmap -model pc104 -layout us -option "misc:extend,lv5:caps_switch_lock,comp
 # setxkbmap -v 9 -option "" -option "misc:extend,lv5:caps_switch_lock,compose:menu"
 
 alias ani-cli="github/ani-cli/./ani-cli"
+
+function fzf_cd() {
+    local dir
+	dir=$(fdfind --type d . / \
+				 --exclude proc \
+				 --exclude home/*/.cache \
+				 --exclude var/cache \
+				 --exclude home/*/.local/share/Trash \
+				 --exclude mnt/windows/java \
+				 --exclude mnt/windows/xampp \
+				 --exclude mnt/windows/Intel \
+				 --exclude mnt/windows/NVIDIA \
+				 --exclude mnt/windows/Recovery \
+				 --exclude mnt/windows/VeeamFLR \
+				 --exclude mnt/windows/Games \
+				 --exclude mnt/windows/PerfLogs \
+				 --exclude mnt/windows/Program\ Files \
+				 --exclude mnt/windows/Program\ Files\ \(x86\) \
+				 --exclude mnt/windows/\$Recycle.Bin \
+				 --exclude mnt/windows/Battlestate\ Games \
+				 --exclude mnt/windows/XboxGames \
+				 --exclude mnt/windows/Microsoft \
+				 --exclude mnt/windows/Riot\ Games \
+				 --exclude mnt/windows/OneDriveTemp \
+				 --exclude mnt/windows/ProgramData \
+				 --exclude mnt/windows/Python310 \
+				 --exclude mnt/windows/Python312 \
+				 --exclude mnt/windows/Windows \
+				 --exclude mnt/windows/Windows.old \
+                 --exclude mnt/windows/Users/yoris/AppData \
+                 --exclude mnt/windows/Program\ Files/WindowsApps \
+				 | fzf) && cd "$dir"
+}
+bind '"\C-f":"\C-u fzf_cd\n"'

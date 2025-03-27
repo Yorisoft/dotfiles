@@ -29,8 +29,8 @@
 
 source ~/.vim/config/plugins.vim
 source ~/.vim/config/general-settings.vim
-source ~/.vim/config/coc.vim
 source ~/.vim/config/key-mappings.vim
+source ~/.vim/config/coc.vim
 source ~/.vim/config/themes/codedark.vim
 
 " source ~/.vim/config/themes/apprentice.vim

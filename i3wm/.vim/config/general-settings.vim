@@ -11,7 +11,8 @@ set backspace=indent,eol,start 				" Allow backspace in insert mode
 " set belloff=all 							" Turn off visual and audible alerts
 set noerrorbells 							" Disable error bell
 " set display=lastline 						" Always displays last line of file at botton of editor
-set encoding=utf-8 nobomb 					" Set encoding. Using UTF-8 without BOM
+set encoding=utf-8 							" Set encoding. Using UTF-8
+set bomb	 					 			" Including BOM( Byte Order Mark)
 set hidden 									" Allows switching between buffers without saving changes. 
 set history=10000 							" Increase commands saved to history file.
 set hlsearch 								" Highlight on search
@@ -64,6 +65,8 @@ if has("autocmd") 							" Automatic commands
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+	" Treat any .sql files as SQLite 
+	" autocmd BufNewFile,BufRead *.sql setlocal filetype=sql syntax=sql
 endif
 
 " Save undo history

@@ -47,6 +47,11 @@ Plug 'airblade/vim-gitgutter'
 " Useful plugin to show you pending keybinds.
 Plug 'liuchengxu/vim-which-key'
 
+" SQL Syntax Highlighting and Autocompletion
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-completion'
+Plug 'kristijanhusak/vim-dadbod-ui'
+
 " Colorschemes
 Plug 'romainl/Apprentice'
 Plug 'ghifarit53/tokyonight-vim'
