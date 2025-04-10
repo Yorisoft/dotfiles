@@ -3,5 +3,5 @@
 # for examples
 [ -n "$PS1" ] && source ~/.bash_profile;
 
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+# Created by `pipx` on 2025-04-02 14:50:36
+export PATH="$PATH:/home/yorisoft/.local/bin"

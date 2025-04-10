@@ -10,6 +10,7 @@
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export PATH="/usr/lib/qt6/bin:$PATH"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -19,6 +20,13 @@ fi
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
+fi
+
+# set PATH so it includes qt(6) bin if it exists
+if [ -d "$HOME/Qt" ] ; then
+	export PATH="$HOME/Qt/6.9.0/gcc_64/bin:$PATH"
+	export LD_LIBRARY_PATH="$HOME/Qt/6.9.0/gcc_64/lib:$LD_LIBRARY_PATH"
+	export QML2_IMPORT_PATH="$HOME/Qt/6.9.0/gcc_64/qml:$QML2_IMPORT_PATH"
 fi
 
 # If not running interactively, don't do anything
@@ -139,10 +147,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# export QT_QPA_PLATFORMTHEME=gtk2
-# export XDG_CURRENT_DESKTOP=KDE
-# export XDG_SESSION_DESKTOP=KDE
-
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 # Theme
 # oh-my-posh theme
@@ -162,7 +168,7 @@ fi
 
 # BigBagTrixXKB 
 # Keyboard mapping
-setxkbmap -model pc104 -layout us -option "misc:extend,lv5:caps_switch_lock,compose:menu" &> /dev/null
+setxkbmap -model pc86 -layout us -option "misc:extend,lv5:caps_switch_lock,compose:menu" &> /dev/null
 # setxkbmap -v 9 -option "" -option "misc:extend,lv5:caps_switch_lock,compose:menu"
 
 alias ani-cli="github/ani-cli/./ani-cli"
@@ -200,4 +206,7 @@ function fzf_cd() {
                  --exclude mnt/windows/Program\ Files/WindowsApps \
 				 | fzf) && cd "$dir"
 }
-bind '"\C-f":"\C-u fzf_cd\n"'
+bind '"\C-f":"\C-u fzf_cd\n"'export PATH="$HOME/Qt/6.9.0/gcc_64/bin:$PATH"
+
+# Created by `pipx` on 2025-04-02 14:50:36
+export PATH="$PATH:/home/yorisoft/.local/bin"
