@@ -35,9 +35,6 @@ Plug 'machakann/vim-highlightedyank'
 " "gc" to comment visual regions/lines
 Plug 'tpope/vim-commentary'
 
-" Detect tabstop and shiftwidth automatically
-Plug 'tpope/vim-sleuth'
-
 " Enables integration with Git
 Plug 'tpope/vim-fugitive'
 
@@ -92,5 +89,8 @@ Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'} "this version works with my vim 8.2
 
 " Remove distractions and provide clean UI. Requires nvim..
 " Plug 'folke/zen-mode.nvim'
+
+" Detect tabstop and shiftwidth automatically
+" Plug 'tpope/vim-sleuth'
 
 call plug#end()
