@@ -18,9 +18,12 @@ set history=10000 							" Increase commands saved to history file.
 set hlsearch 								" Highlight on search
 set incsearch 								" Highlight dynamically as pattern is typed
 set nojoinspaces 							" Single space line (J)oining
+set noeol 									" Don’t add empty newlines at the end of files
+set binary
 " set smarttab 								" Better tab behavior	
 set shiftwidth=4 							" Set tab width
 set tabstop=4 								" Make tab stop width
+set softtabstop=4
 set expandtab    							" Insert spaces instead of tabs. Half shiftwidth && tabstop if not using expandtab
 set colorcolumn=100 						" Add visual linebreak column
 set nostartofline 							" Don’t reset cursor to start of line when moving around.
@@ -34,8 +37,6 @@ set wildmenu 								" Enhance command-line completion
 set esckeys 								" Allow cursor keys in insert mode
 set ttyfast 								" Optimize for fast terminal connections
 set gdefault 								" Add the g flag to search/replace by default
-set binary
-set noeol 									" Don’t add empty newlines at the end of files
 set number 									" Enable numberline.
 if exists("&relativenumber") 				" Use relative line numbers
 	set relativenumber
@@ -101,7 +102,7 @@ let NERDTreeShowHidden=1
 let g:highlightedyank_highlight_duration = 150
 
 " Sets how vim will display certain whitespace characters in the editor.
-" set list
+set list
 set listchars=tab:»\ ,trail:·,nbsp:␣
 " Use the following settings if you do not want unicode characters
 "set listchars=tab:>\ ,trail:-,nbsp:+

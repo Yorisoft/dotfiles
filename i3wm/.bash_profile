@@ -23,11 +23,11 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # set PATH so it includes qt(6) bin if it exists
-if [ -d "$HOME/Qt" ] ; then
-	export PATH="$HOME/Qt/6.9.0/gcc_64/bin:$PATH"
-	export LD_LIBRARY_PATH="$HOME/Qt/6.9.0/gcc_64/lib:$LD_LIBRARY_PATH"
-	export QML2_IMPORT_PATH="$HOME/Qt/6.9.0/gcc_64/qml:$QML2_IMPORT_PATH"
-fi
+# if [ -d "$HOME/Qt" ] ; then
+# 	export PATH="$HOME/Qt/6.9.0/gcc_64/bin:$PATH"
+# 	export LD_LIBRARY_PATH="$HOME/Qt/6.9.0/gcc_64/lib:$LD_LIBRARY_PATH"
+# 	export QML2_IMPORT_PATH="$HOME/Qt/6.9.0/gcc_64/qml:$QML2_IMPORT_PATH"
+# fi
 
 # If not running interactively, don't do anything
 case $- in
@@ -206,7 +206,10 @@ function fzf_cd() {
                  --exclude mnt/windows/Program\ Files/WindowsApps \
 				 | fzf) && cd "$dir"
 }
-bind '"\C-f":"\C-u fzf_cd\n"'export PATH="$HOME/Qt/6.9.0/gcc_64/bin:$PATH"
+bind '"\C-f":"\C-u fzf_cd\n"'
+
+export PATH="$HOME/Qt/6.9.0/gcc_64/bin:$PATH"
 
 # Created by `pipx` on 2025-04-02 14:50:36
 export PATH="$PATH:/home/yorisoft/.local/bin"
+. "$HOME/.cargo/env"
