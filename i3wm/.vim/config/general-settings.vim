@@ -68,6 +68,8 @@ if has("autocmd") 							" Automatic commands
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 	" Treat .clang-format files as YAML
 	autocmd BufNewFile,BufRead .clang-format setfiletype yaml
+	" Trigger ANSI color escape sequence
+    autocmd BufReadPost *.log ColorHighlight
 
 	" Treat any .sql files as SQLite 
 	" autocmd BufNewFile,BufRead *.sql setlocal filetype=sql syntax=sql

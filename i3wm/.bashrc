@@ -5,4 +5,3 @@
 
 # Created by `pipx` on 2025-04-02 14:50:36
 export PATH="$PATH:/home/yorisoft/.local/bin"
-. "$HOME/.cargo/env"

@@ -119,6 +119,11 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# Conditional Aliase for vim or fedora (gvim/vimx)
+if [ -f /etc/os-release ] && grep -qi 'fedora' /etc/os-release; then
+  alias vim='vimx'
+fi
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -162,13 +167,13 @@ export NVM_DIR="$HOME/.nvm"
 # fi
 
 # Start Oh-My-Posh if it's not already running
-if ! pgrep -x oh-my-posh > /dev/null; then
-	eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/amro.omp.json)"
-fi
+# if ! pgrep -x oh-my-posh > /dev/null; then
+# 	eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/amro.omp.json)"
+# fi
 
 # BigBagTrixXKB 
 # Keyboard mapping
-setxkbmap -model pc86 -layout us -option "misc:extend,lv5:caps_switch_lock,compose:menu" &> /dev/null
+setxkbmap -model pc104 -layout us -option "misc:extend,lv5:caps_switch_lock,compose:menu" &> /dev/null
 # setxkbmap -v 9 -option "" -option "misc:extend,lv5:caps_switch_lock,compose:menu"
 
 alias ani-cli="github/ani-cli/./ani-cli"
@@ -212,4 +217,3 @@ export PATH="$HOME/Qt/6.9.0/gcc_64/bin:$PATH"
 
 # Created by `pipx` on 2025-04-02 14:50:36
 export PATH="$PATH:/home/yorisoft/.local/bin"
-. "$HOME/.cargo/env"

@@ -44,6 +44,9 @@ Plug 'airblade/vim-gitgutter'
 " Useful plugin to show you pending keybinds.
 Plug 'liuchengxu/vim-which-key'
 
+" ANSI Escape Sequence Color for .log files
+Plug 'chrisbra/Colorizer'
+
 " SQL Syntax Highlighting and Autocompletion
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-completion'
