@@ -60,6 +60,7 @@ set ruler 									" Show the cursor position
 set scrolloff=10 							" Minimum number of lines to keep above and below the cursor
 " set shortmess=atI 						" Don’t show the intro message when starting Vim
 set title 									" Show the filename in the window titlebar
+set titlestring=%F\ %m\ -\ VIM 				" Show the filename in the window titlebar
 let nerd_font=1 							" Enable nerd font support
 if has("autocmd") 							" Automatic commands
 	" Treat .json files as .js

@@ -5,3 +5,5 @@ backup_dotfiles.sh
 .gitkeep
 .gitignore
 log/*
+x11_configs
+.Xresources

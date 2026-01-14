@@ -1,25 +1,27 @@
 {
-	"semanticTokens.filetypes": [
-		"*"
-	],
-	"codeLens.enable": true,
-	"clangd.arguments": [
-		"--log=verbose",
-		"-header-insertion=never"
-	],
-	"sql.formatOptions": {
-		"identifierCase": "preserve",
-		"keywordCase": "preserve",
-		"tabWidth": 4,
-		"reindent": true,
-		"indentStyle": "standard",
-		"alignColumns": true,
-		"newlineBeforeWhere": true,
-		"newlineBeforeJoin": true,
-		"newlineBeforeAndInWhere": true,
-		"newlineBeforeOrInWhere": true,
-		"alignOperators": true,
-		"uppercaseFunctions": true,
-		"linesBetweenQueries": 0
-	}
+    "semanticTokens.filetypes": [
+        "*"
+    ],
+    "clangd.arguments": [
+        "--log=verbose",
+        "-header-insertion=never"
+    ],
+    "tsserver.useLocalTsdk": true,
+    "tsserver.log": "verbose",
+    "codeLens.enable": true,
+    "sql.formatOptions": {
+        "identifierCase": "preserve",
+        "keywordCase": "preserve",
+        "tabWidth": 4,
+        "reindent": true,
+        "indentStyle": "standard",
+        "alignColumns": true,
+        "newlineBeforeWhere": true,
+        "newlineBeforeJoin": true,
+        "newlineBeforeAndInWhere": true,
+        "newlineBeforeOrInWhere": true,
+        "alignOperators": true,
+        "uppercaseFunctions": true,
+        "linesBetweenQueries": 0
+    }
 }

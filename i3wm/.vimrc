@@ -32,6 +32,10 @@ source ~/.vim/config/general-settings.vim
 source ~/.vim/config/key-mappings.vim
 source ~/.vim/config/coc.vim
 source ~/.vim/config/themes/codedark.vim
+" Make background transparent
+highlight Normal guibg=NONE ctermbg=NONE
+highlight NormalNC guibg=NONE ctermbg=NONE
+highlight EndOfBuffer guibg=NONE ctermbg=NONE
 
 " source ~/.vim/config/themes/apprentice.vim
 " source ~/.vim/config/themes/drakula.vim

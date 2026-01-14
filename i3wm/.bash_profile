@@ -10,7 +10,8 @@
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export PATH="/usr/lib/qt6/bin:$PATH"
+export PATH="/usr/lib/qt6/bin:/usr/local/go/bin:$HOME/go/bin:$PATH"
+export PROMPT_COMMAND=""
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -157,23 +158,23 @@ export NVM_DIR="$HOME/.nvm"
 
 # Theme
 # oh-my-posh theme
-# eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/amro.omp.json)"
+# # Oh My Posh - Auto-install if not present
+if ! command -v oh-my-posh &> /dev/null; then
+    echo "Oh My Posh not found. Installing..."
+    curl -s https://ohmyposh.dev/install.sh | bash -s
+    export PATH="$HOME/.local/bin:$PATH"
+fi
 
-# Check if Oh-My-Posh is installed
-# if ! command -v oh-my-posh &> /dev/null; then
-#     echo "Oh-My-Posh not found. Installing..."
-# 	cd $HOME
-#     sudo apt update && sudo apt install -y oh-my-posh
-# fi
+if ! fc-list | grep -qi "FiraCode Nerd Font\|Roboto"; then
+    echo "Installing Nerd Fonts..."
+    sudo apt update && sudo apt install -y fonts-firacode fonts-roboto
+fi
 
-# Start Oh-My-Posh if it's not already running
-# if ! pgrep -x oh-my-posh > /dev/null; then
-# 	eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/amro.omp.json)"
-# fi
+# eval "$(oh-my-posh init bash --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/amro.omp.json')"
 
 # BigBagTrixXKB 
 # Keyboard mapping
-setxkbmap -model pc104 -layout us -option "misc:extend,lv5:caps_switch_lock,compose:menu" &> /dev/null
+setxkbmap -model pc105 -layout us -option "misc:extend,lv5:caps_switch_lock,compose:menu" &> /dev/null
 # setxkbmap -v 9 -option "" -option "misc:extend,lv5:caps_switch_lock,compose:menu"
 
 alias ani-cli="github/ani-cli/./ani-cli"
@@ -213,7 +214,12 @@ function fzf_cd() {
 }
 bind '"\C-f":"\C-u fzf_cd\n"'
 
-export PATH="$HOME/Qt/6.9.0/gcc_64/bin:$PATH"
+# export PATH="$HOME/Qt/6.9.0/gcc_64/bin:$PATH"
 
 # Created by `pipx` on 2025-04-02 14:50:36
 export PATH="$PATH:/home/yorisoft/.local/bin"
+. "$HOME/.cargo/env"
+
+# goose terminal integration
+eval "$(goose term init bash --name primary-session)"
+PS1='$(goose term info) \w $ '

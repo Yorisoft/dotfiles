@@ -61,6 +61,15 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'arzg/vim-colors-xcode'
 Plug 'tomasiser/vim-code-dark'
 
+" Jupyter Notebook
+Plug 'goerz/jupytext.vim'
+
+" Goyo - Distraction-free writing
+Plug 'junegunn/goyo.vim'
+
+" GitHub Copilot Integration
+" Plug 'github/copilot.vim'
+
 " coc.nvim
 " Or build from source code by using yarn: https://yarnpkg.com
 Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'} "this version works with my vim 8.2
@@ -97,3 +106,23 @@ Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'} "this version works with my vim 8.2
 " Plug 'tpope/vim-sleuth'
 
 call plug#end()
+
+let g:coc_global_extensions = [
+  \ 'coc-cfn-lint',
+  \ 'coc-clangd',
+  \ 'coc-clang-format-style-options',
+  \ 'coc-cmake',
+  \ 'coc-discord-rpc',
+  \ 'coc-docker',
+  \ 'coc-java',
+  \ 'coc-json',
+  \ 'coc-ltex',
+  \ 'coc-markdownlint',
+  \ 'coc-markdown-preview-enhanced',
+  \ 'coc-omnisharp',
+  \ 'coc-rome',
+  \ 'coc-rust-analyzer',
+  \ 'coc-sh',
+  \ 'coc-xml',
+  \ 'coc-yaml'
+  \ ]
