@@ -1,5 +1,7 @@
 *.log
-*.vim/undo
-*.vim/swaps
-*.vim/plugged
-*.tmux/pluggings
+*/.vim/swaps
+*/.vim/undo
+*/.vim/plugged
+*/.tmux/catppuccin
+*/.tmux/plugins
+*/.config/git/.signers
