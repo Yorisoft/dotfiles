@@ -2,13 +2,27 @@
     "semanticTokens.filetypes": [
         "*"
     ],
+	"codeLens.enable": true,
     "clangd.arguments": [
         "--log=verbose",
         "-header-insertion=never"
     ],
+    "languageserver": {
+		"qml": {
+			"command": "qmlls6",
+			"filetypes": ["qml"]
+		}
+	},
     "tsserver.useLocalTsdk": true,
     "tsserver.log": "verbose",
     "codeLens.enable": true,
+    "discordrpc.enabled": true,
+    "discordrpc.detailsEditing": "Editing {filename}",
+    "discordrpc.showWorkspace": true,
+    "discordrpc.blacklist": [
+        "~/private", 
+        "~/work/secret"
+    ],
     "sql.formatOptions": {
         "identifierCase": "preserve",
         "keywordCase": "preserve",
@@ -23,5 +37,7 @@
         "alignOperators": true,
         "uppercaseFunctions": true,
         "linesBetweenQueries": 0
-    }
+    },
+    "coc.preferences.semanticTokensHighlights": false,
+    "coc.preferences.extensionUpdateCheck": "daily"
 }
